@@ -64,4 +64,4 @@ Guarda el contenido de payload.xml y ejecuta:
 curl -X POST http://TU_IP:8000/api -H "Content-Type: application/xml" --data-binary @payload.xml
 ```
 
-La respuesta tomará mucho tiempo o provocará colapso del proceso php.
+La respuesta tomará mucho tiempo o provocará colapso del proceso python.
