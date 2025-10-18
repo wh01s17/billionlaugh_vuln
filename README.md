@@ -1,10 +1,13 @@
 # "Billion Laughs Attack" en Python - Flask
-> **Aviso importante:** este repositorio contiene una **aplicación deliberadamente vulnerable** para fines educativos (demostración de la vulnerabilidad *Billion Laughs* / expansión de entidades XML). **NO** la ejecutes en producción ni la expongas a redes públicas. Usa un entorno aislado (máquina virtual o contenedor) y datos controlados.
+
+⚠️ **¡ESTE PROYECTO ES INTENCIONALMENTE INSEGURO!**
+
+Este repositorio contiene un ejemplo **intencionalmente vulnerable** al ataque DoS [Billion Laughs](https://wh01s17.vercel.app/blog/Ciberseguridad/dos_-_billion_laughs_attack). Debe ser utilizado únicamente con fines educativos, pruebas de concepto y laboratorios controlados.
 
 ---
 
 ## Resumen
-Aplicación Flask mínima que parsea XML utilizando `lxml` con protecciones desactivadas (`resolve_entities=True`, `no_network=False`, `huge_tree=True`) para ilustrar cómo funciona un ataque de *entity expansion* (Billion Laughs). 
+Aplicación Flask mínima que parsea XML utilizando `lxml` con protecciones desactivadas (`resolve_entities=True`, `no_network=False`, `huge_tree=True`) para ilustrar cómo funciona un ataque de *entity expansion* ([Billion Laughs](https://wh01s17.vercel.app/blog/Ciberseguridad/dos_-_billion_laughs_attack)). 
 
 ---
 
