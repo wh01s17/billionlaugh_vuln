@@ -17,8 +17,8 @@ El ataque "Billion Laughs" es un tipo de ataque de denegación de servicio (DoS)
 1. Clona este repositorio:
 
     ```bash
-    git clone https://github.com/wh01s17/billionlaugh.git
-    cd billionlaugh 
+    git clone https://github.com/wh01s17/billionlaugh_vuln.git
+    cd billionlaugh_vuln
     ```
 
 2. Crea un entorno virtual e instala Django:
