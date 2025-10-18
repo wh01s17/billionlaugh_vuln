@@ -32,7 +32,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Ejecutar (modo enseñanza — aislado)
+## Ejecutar
 ```bash
 python app.py
 ```
