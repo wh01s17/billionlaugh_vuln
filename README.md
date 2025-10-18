@@ -26,7 +26,7 @@ El ataque "Billion Laughs" es un tipo de ataque de denegación de servicio (DoS)
     ```bash
     python -m venv venv
     source venv/bin/activate   # En Windows usa `venv\Scripts\activate`
-    pip install Django
+    pip install django lxml
     ```
 
 3. Ejecuta las migraciones iniciales:
